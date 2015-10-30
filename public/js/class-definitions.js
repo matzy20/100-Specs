@@ -135,6 +135,16 @@ var domains = {
  *   Konqueror  => "konqueror.org"
  *
  */
+var browsers = {
+
+Chromium: "google.com",
+Safari: "apple.com",
+Opera: "opera.com",
+Firefox: "mozilla.org",
+Sleipnir: "fenrir-inc.com",
+Konqueror: "konqueror.org",
+
+};
 
 
 /* Step 13
@@ -153,7 +163,11 @@ var domains = {
  *  isDouble  => true
  *
  */
+var rainbow = {
 
+colors:["#F0280A", "#FF8800", "#FFDD00", "#51AB0C", "#1593ED", "#5215ED", "#A915ED"],
+isDouble: true,
+};
 
 /* Step 14
  *
@@ -168,7 +182,7 @@ var domains = {
  * "Bieber Linux"
  *
  */
-
+var linuxFlavors = ["Gentoo", "Fedora", "Debian", "Slackware", "Red Hat", "Bieber Linux" ];
 
 /* Step 15
  *
@@ -182,7 +196,7 @@ var domains = {
  * "cytosine"
  *
  */
-
+var DNA = ["nucleatides", "guanine", "adenine", "thymine", "cytosine"];
 
 /* Step 16
  *
@@ -195,7 +209,13 @@ var domains = {
  * Surface      => 320
  *
  */
+var laptopCosts = {
 
+  MacBook: 1500,
+  Alienware: 2500,
+  HP: 499,
+  Surface: 320,
+};
 
 /* Step 17
  *
@@ -211,7 +231,7 @@ var domains = {
  * "Species"
  *
  */
-
+var livingOrganismClassification = ["Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"];
 
 /* Step 18
  *
@@ -226,7 +246,7 @@ var domains = {
  *
  */
 
-
+var scmList = ["git", "svn", "mercurial", "bazaar", "cvs"];
 /* Step 19
  *
  * Define a literal object named "beers" with
