@@ -165,7 +165,15 @@ Konqueror: "konqueror.org",
  */
 var rainbow = {
 
-colors:["#F0280A", "#FF8800", "#FFDD00", "#51AB0C", "#1593ED", "#5215ED", "#A915ED"],
+colors: {
+  red: "#F0280A",
+  orange: "#FF8800",
+  yellow: "#FFDD00",
+  green: "#51AB0C",
+  blue: "#1593ED",
+  indigo: "#5215ED",
+  violet: "#A915ED",
+},
 isDouble: true,
 };
 
@@ -265,6 +273,16 @@ var scmList = ["git", "svn", "mercurial", "bazaar", "cvs"];
  *
  */
 
+var beers = {
+
+IPA: "Ale",
+Lager: "Strong",
+Heffeweisen: "German",
+Stout: ["Thick", "Dark"],
+Porter: "Bitter",
+Ale: ["Light", "Golden"],
+
+};
 
 /* Step 20
  *
@@ -275,7 +293,12 @@ var scmList = ["git", "svn", "mercurial", "bazaar", "cvs"];
  *
  */
 
+function sahara_river () {
 
+return 'Nile River';
+
+}
+console.log(sahara_river('Nile River'));
 /* Step 21
  *
  * Define a function named "addNumbers"
@@ -287,7 +310,12 @@ var scmList = ["git", "svn", "mercurial", "bazaar", "cvs"];
  *
  */
 
-
+function addNumbers (num1, num2) {
+  // body...
+  var sum = num1 + num2;
+  return sum;
+}
+console.log (addNumbers(0, 4));
 /* Step 22
  *
  * Define a function named "installLinux"
@@ -299,8 +327,15 @@ var scmList = ["git", "svn", "mercurial", "bazaar", "cvs"];
  * @return {Bool}
  *
  */
+function installLinux (linux) {
 
+var linuxFlavors = ["Gentoo", "Fedora", "Debian", "Slackware", "Red Hat", "Bieber Linux"];
 
+  if (linuxFlavors.indexOf(linux) != -1) {return true;}
+  else {return false;}
+}
+
+console.log(installLinux("Gentoo"));
 /* Step 23
  *
  * Define a function named "drink" that takes
@@ -319,7 +354,23 @@ var scmList = ["git", "svn", "mercurial", "bazaar", "cvs"];
  *
  */
 
+function drink (beerType) {
 
+//created this ! bang filter to eliminate first
+//determined we're deciding two things
+//1. is it a "string", if so ...
+//2. is it an "array", if so ...
+if (!beers[beerType]) {return false;}
+if (typeof beers[beerType] == "string") {return "This " + beerType + " " + "is" + " " + beers[beerType] + ".";}
+
+//else has if statement nested
+//bracket notations can be next to each other
+/* use "object" to go through beers object, as "object" is a catch-all (e.g. in terminal typeof [] = object; typeof {}= object) vs "string" is pretty explicit */
+/* to make array route ([0,1]) more dynamic, can use 1. beers[beerType].join(" " and " "); 2. can use for loop with description or type += .. */
+  else {if(typeof beers[beerType] == "object") {return "This " + beerType + " " + "is" + " " + beers[beerType][0] + " " + "and " + beers[beerType][1] + ".";}
+}
+}
+console.log(drink('Stout'));
 /* Step 24
  *
  * Define a function named "browseURL" that takes
@@ -327,12 +378,16 @@ var scmList = ["git", "svn", "mercurial", "bazaar", "cvs"];
  * If the browser doesn't exist, return false.
  * If the browser exists, return the value which is a partial URL.
  *
- * @param {String}
+ * @param { String}
  * @return {String if true else return false}
  *
  */
+function browseURL (browser) {
 
-
+if (!browsers[browser]) {return false;}
+if (browsers[browser]) {return browsers[browser];}
+}
+console.log(browseURL('Chromium'));
 /* Step 25
  *
  * Define a function named "listLivingOrgClass" that
@@ -342,8 +397,18 @@ var scmList = ["git", "svn", "mercurial", "bazaar", "cvs"];
  * @return {String}
  *
  */
+function listLivingOrgClass (orgClass) {
 
+var newListStruc = document.createElement("ul");
+var newListBullet = document.createElement("li");
+//I created this variable due to 'error only one element on document allowed'
+var newListBulletOne = document.appendChild(newListBullet).livingOrganismClassification[0];
 
+//need to rewrite since pulling from an array vs object?
+if (!livingOrganismClassification[orgClass]) {return false;}
+else{if (livingOrganismClassification[orgClass]) {return newListBullet;}}
+}
+listLivingOrgClass("Kingdom");
 /* Step 26
  *
  * Define a function named "favoritePlanet" that
@@ -363,8 +428,16 @@ var scmList = ["git", "svn", "mercurial", "bazaar", "cvs"];
  * @return {String}
  *
  */
+function favoritePlanet (currentPlanet) {
 
+//why is it printing if statement with ! bang? Is it bc pulling from an array vs object?
+if (!planets[currentPlanet]) {return currentPlanet + " is not a planet!";}
+//how do I produce a string from Math.random()? Returns undefine as well
 
+else {if (planets[currentPlanet]) {return "I'm from " + currentPlanent + " but I wish I could go to " + planets[currentPlanet].charAt().Math.random().join('') + ".";}
+ }
+}
+console.log(favoritePlanet('Mercury'));
 /* Step 27
  *
  * Define a class named "Person" that has properties for
