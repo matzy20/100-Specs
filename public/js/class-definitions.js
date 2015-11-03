@@ -397,18 +397,19 @@ console.log(browseURL('Chromium'));
  * @return {String}
  *
  */
-function listLivingOrgClass (orgClass) {
+//because function assumes it's in array, no need if statement and to call function with a parameter
+//+= str read more on, assigns
+function listLivingOrgClass () {
+  var str = "<ul>";
+  var endStr = "</ul>";
+  for (var i = 0; i < livingOrganismClassification.length; i++) {
+   str += "<li>" + livingOrganismClassification[i] + "</li>";}
+  console.log(str + endStr);
+  return str + endStr;
 
-var newListStruc = document.createElement("ul");
-var newListBullet = document.createElement("li");
-//I created this variable due to 'error only one element on document allowed'
-var newListBulletOne = document.appendChild(newListBullet).livingOrganismClassification[0];
-
-//need to rewrite since pulling from an array vs object?
-if (!livingOrganismClassification[orgClass]) {return false;}
-else{if (livingOrganismClassification[orgClass]) {return newListBullet;}}
 }
-listLivingOrgClass("Kingdom");
+console.log(listLivingOrgClass());
+
 /* Step 26
  *
  * Define a function named "favoritePlanet" that
@@ -430,14 +431,17 @@ listLivingOrgClass("Kingdom");
  */
 function favoritePlanet (currentPlanet) {
 
-//why is it printing if statement with ! bang? Is it bc pulling from an array vs object?
-if (!planets[currentPlanet]) {return currentPlanet + " is not a planet!";}
+  var randomPlanetIndex = Math.floor(Math.random() * planets.length);
+
+
+//why is it printing if statement with ! bang? Is it bc pulling from an array vs object? Yes, can't do [] like beer and browser examples
+
+  if (planets.indexOf(currentPlanet) === -1) {return currentPlanet + " is not a planet!";}
+  else {return "I'm from " + currentPlanet + ", but I wish I could go to " + planets[randomPlanetIndex] +  ".";}
 //how do I produce a string from Math.random()? Returns undefine as well
 
-else {if (planets[currentPlanet]) {return "I'm from " + currentPlanent + " but I wish I could go to " + planets[currentPlanet].charAt().Math.random().join('') + ".";}
- }
 }
-console.log(favoritePlanet('Mercury'));
+console.log(favoritePlanet('Earth'));
 /* Step 27
  *
  * Define a class named "Person" that has properties for
