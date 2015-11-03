@@ -448,7 +448,7 @@ function favoritePlanet (currentPlanet) {
 
 //why is it printing if statement with ! bang? Is it bc pulling from an array vs object? Yes, can't do [] like beer and browser examples
 
-  if (planets.indexOf(currentPlanet) === -1) {
+  if (planets[currentPlanet] === -1) {
    return currentPlanet + " is not a planet!";
   }
   else {
