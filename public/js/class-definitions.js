@@ -448,7 +448,7 @@ function favoritePlanet (currentPlanet) {
 
 //why is it printing if statement with ! bang? Is it bc pulling from an array vs object? Yes, can't do [] like beer and browser examples
 
-  if (planets[currentPlanet] === -1) {
+  if (planets.indexOf(currentPlanet) === -1) {
    return currentPlanet + " is not a planet!";
   }
   else {
@@ -457,7 +457,7 @@ function favoritePlanet (currentPlanet) {
 //how do I produce a string from Math.random()? Returns undefine as well
 
 }
-favoritePlanet('Earth');
+favoritePlanet('Mercury');
 /* Step 27
  *
  * Define a class named "Person" that has properties for
@@ -598,7 +598,24 @@ purchaseLaptop ('HP');
  *   grow
  *
  */
+var Garden = function (plantsTotal, isWatered) {
 
+  this.plantsTotal = 10;
+  this.isWatered = false;
+
+  Garden.prototype.water = function () {
+    this.isWatered = true;
+  };
+  Garden.prototype.grow = function() {
+
+    if (this.isWatered === true) {
+      this.plantsTotal += 1;
+      this.isWatered = false;
+    } else {
+      return false;
+    }
+  };
+};
 
 /* Step 32
  *
@@ -617,6 +634,18 @@ purchaseLaptop ('HP');
  *
  */
 
+var SolarSystem = function (planets){
+
+  this.planets = [];
+
+  SolarSystem.prototype.addPlanet = function (planet) {
+    this.planets.push(planet);
+  };
+
+  SolarSystem.prototype.removePlanet = function (planet) {
+    this.planets.splice(0, 1);
+  };
+};
 
 /* Step 33
  *
