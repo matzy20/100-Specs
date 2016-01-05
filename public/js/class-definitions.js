@@ -680,6 +680,16 @@ var SolarSystem = function (planets){
  *
  */
 
+ var PrincessLeia = function (name, money, age, gender, isInTrouble) {
+  this.isInTrouble = null;
+  Person.call(this, name, money, age, gender);
+ };
+
+PrincessLeia.prototype = Object.create(Person.prototype, {
+  constructor: {
+    value: Person
+  }
+});
 
 /* Step 34
  *
