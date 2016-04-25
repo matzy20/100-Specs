@@ -417,7 +417,6 @@ function listLivingOrgClass () {
   for (var i = 0; i < livingOrganismClassification.length; i++) {
    str += "<li>" + livingOrganismClassification[i] + "</li>";
   }
-  console.log(str + endStr);
    return str + endStr;
 }
 listLivingOrgClass();
@@ -634,15 +633,15 @@ var Garden = function (plantsTotal, isWatered) {
  *
  */
 
-var SolarSystem = function (planets){
+var SolarSystem = function(planets){
 
   this.planets = [];
 
-  SolarSystem.prototype.addPlanet = function (planet) {
+  SolarSystem.prototype.addPlanet = function(planet){
     this.planets.push(planet);
   };
 
-  SolarSystem.prototype.removePlanet = function (planet) {
+  SolarSystem.prototype.removePlanet = function(planet){
     this.planets.splice(0, 1);
   };
 };
@@ -680,7 +679,7 @@ var SolarSystem = function (planets){
  *
  */
 
- var PrincessLeia = function (name, money, age, gender, isInTrouble) {
+ var PrincessLeia = function(name, money, age, gender, isInTrouble){
   this.isInTrouble = null;
   Person.call(this, name, money, age, gender);
  };
@@ -690,6 +689,28 @@ PrincessLeia.prototype = Object.create(Person.prototype, {
     value: Person
   }
 });
+
+PrincessLeia.prototype.shootsGun = function () {
+  this.isInTrouble = false;
+  return "Leia shoots her gun wildly";
+};
+
+PrincessLeia.prototype.getsInTrouble = function () {
+  this.isInTrouble = true;
+  return "Help me Obi-wan Kenobi, you're my only hope";
+};
+
+PrincessLeia.prototype.marries = function(lover){
+
+  if (lover === 'Han Solo'){
+    return true;
+  }
+  if (lover === 'Luke Skywalker'){
+    return "Gross!";
+  } else {
+    return false;
+  }
+};
 
 /* Step 34
  *
@@ -709,6 +730,20 @@ PrincessLeia.prototype = Object.create(Person.prototype, {
  *
  */
 
+ var Stapler = function(color, maxPapers){
+  this.color = color;
+  this.maxPapers = maxPapers;
+ };
+
+Stapler.prototype.staplePapers = function(numOfPapers){
+
+  if (numOfPapers <= this.maxPapers) {
+    return true;
+  }
+  if (numOfPapers > this.maxPapers) {
+    return false;
+  }
+};
 
 /* Step 35
  *
@@ -748,8 +783,56 @@ PrincessLeia.prototype = Object.create(Person.prototype, {
  *   addDiscovery
  *
  */
+ var Scientist = function(name, money, age, gender, disciplines, discoveries){
 
+  this.disciplines = [];
+  this.discoveries = [];
+  Person.call(this, name, money, age, gender);
+ };
 
+Scientist.prototype = Object.create(Person.prototype, {
+  constructor: {
+  value: Person
+  }
+});
+
+Scientist.prototype.addDiscipline = function(string){
+
+  if (typeof string !== 'string'){
+    return false;
+  } else {
+    return this.disciplines.push(string);
+  }
+};
+
+Scientist.prototype.checkDiscipline = function(string){
+
+  if (this.disciplines.indexOf(string) === -1){
+    return false;
+  } else {
+    return true;
+  }
+};
+
+Scientist.prototype.addDiscovery = function(discovery){
+
+  this.discoveries.push(discovery);
+
+  for (var i = 0; i < this.discoveries.length; i++){
+    console.log(this.discoveries.length);
+
+    if(this.discoveries.length === 1){
+      return "I discovered " + this.discoveries[0] + ".";
+    }
+    if(this.discoveries.length > 1 && this.discoveries.length < 3){
+      return "I discovered " + this.discoveries[0] + " and " + this.discoveries[1] + ".";
+    }
+    if(this.discoveries.length >= 3){
+      return "I discovered " + this.discoveries[0] + ", " + this.discoveries[1] + ", and " + this.discoveries[2] + ".";
+    }
+  }
+  return(this.discoveries);
+};
 /* Step 36
  *
  * Define a class named "BankAccount" that has properties
