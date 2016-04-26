@@ -1093,8 +1093,8 @@ var Shape = function(sides) {
  */
 
 var Box = function(contents, isOpen){
-  this.contents = null;
-  this.isOpen = null;
+  this.contents = contents;
+  this.isOpen = isOpen;
 };
 
 /**
@@ -1105,7 +1105,7 @@ var Box = function(contents, isOpen){
  */
 
 var Door = function(isOpen){
-  this.isOpen = null;
+  this.isOpen = isOpen;
 };
 
 /**
@@ -1117,8 +1117,8 @@ var Door = function(isOpen){
  */
 
 var Shoe = function(size, color){
-  this.size = null;
-  this.color = '';
+  this.size = size;
+  this.color = color;
 
 };
 
@@ -1130,7 +1130,7 @@ var Shoe = function(size, color){
  */
 
 var House = function(stories){
-  this.stories = null;
+  this.stories = stories;
 };
 
 /**
@@ -1141,7 +1141,7 @@ var House = function(stories){
  */
 
 var Lightbulb = function(isOn){
-  this.isOn = null;
+  this.isOn = isOn;
 };
 
 /**
@@ -1152,7 +1152,7 @@ var Lightbulb = function(isOn){
  */
 
 var Cookie = function(flavor){
-  this.flavor = '';
+  this.flavor = flavor;
 
 };
 
@@ -1164,7 +1164,7 @@ var Cookie = function(flavor){
  */
 
  var Meal = function(foods){
-  this.foods = [];
+  this.foods = foods;
  };
 
 /**
@@ -1175,8 +1175,8 @@ var Cookie = function(flavor){
 
 // Create 2 different species of animals
 
-  var george = new Animal('Monkey', 'male');
-  var nemo = new Animal('Fish','male');
+var george = new Animal('Monkey', 'male');
+var nemo = new Animal('Fish','male');
 
 
 // Create 2 different vehicles
@@ -1188,28 +1188,28 @@ var square = new Shape(4);
 var hexagon = new Shape(6);
 
 // Create 2 boxes
-var catBox;
-var christmasPresent;
+var catBox = new Box('cat', true);
+var christmasPresent = new Box('present', false);
 
 // Create 2 doors
-var automaticDoor;
-var bankVault;
+var automaticDoor = new Door(true);
+var bankVault = new Door(false);
 
 // Create 2 shoes
-var rubySlippers;
-var dressShoes;
+var rubySlippers = new Shoe(7, 'red');
+var dressShoes = new Shoe(10, 'black');
 
 // Create 2 houses
-var singleStory;
-var twoStory;
+var singleStory = new House(1);
+var twoStory = new House(2);
 
 // Create 2 lightbulbs
-var incandescent;
-var halogen;
+var incandescent = new Lightbulb(true);
+var halogen = new Lightbulb(false);
 
 // Create 2 cookies of different flavors
-var chocolateChip;
-var gingerbread;
+var chocolateChip = new Cookie('chocolate');
+var gingerbread = new Cookie('gingerbread');
 
 // Create 2 different meals
 var breakfast;
