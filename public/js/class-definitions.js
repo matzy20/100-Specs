@@ -1063,8 +1063,8 @@ var Animal = function(species, gender){
  */
 
 var Vehicle = function(make, model){
-  this.make = '';
-  this.model = '';
+  this.make = make;
+  this.model = model;
 };
 /**
  * Step 52
@@ -1077,9 +1077,10 @@ var Vehicle = function(make, model){
  */
 
 var Shape = function(sides) {
-  this.sides = null;
-  if(sides <=3){
-    sides = null;
+  this.sides = sides;
+
+  if (this.sides < 3 || typeof(this.sides) !== 'number'){
+    this.sides = null;
   }
 };
 
@@ -1179,12 +1180,12 @@ var Cookie = function(flavor){
 
 
 // Create 2 different vehicles
-var civic;
-var forte;
+var civic = new Vehicle('Honda', 'Civic');
+var forte = new Vehicle('KIA', 'Forte');
 
 // Create 2 shapes with different numbers of sides
-var square;
-var hexagon;
+var square = new Shape(4);
+var hexagon = new Shape(6);
 
 // Create 2 boxes
 var catBox;
