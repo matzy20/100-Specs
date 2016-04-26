@@ -819,7 +819,7 @@ Scientist.prototype.addDiscovery = function(discovery){
   this.discoveries.push(discovery);
 
   for (var i = 0; i < this.discoveries.length; i++){
-    console.log(this.discoveries.length);
+    // console.log(this.discoveries.length);
 
     if(this.discoveries.length === 1){
       return "I discovered " + this.discoveries[0] + ".";
@@ -854,7 +854,29 @@ Scientist.prototype.addDiscovery = function(discovery){
  *
  */
 
+var BankAccount = function(balance, owner){
 
+  Person.call(this, balance, owner);
+
+  BankAccount.prototype = Object.create(Person.prototype, {
+  constructor: {
+  value: Person
+  }
+
+});
+
+  BankAccount.prototype.withdraw = function(money){
+
+  };
+
+  BankAccount.prototype.deposit = function(){
+
+  };
+
+  BankAccount.prototype.rob = function(){
+
+  };
+};
 /* Step 37
  *
  * WIP
@@ -1027,6 +1049,10 @@ Scientist.prototype.addDiscovery = function(discovery){
  * @param {string} gender  male or female
  */
 
+var Animal = function(species, gender){
+  this.species = species;
+  this.gender = gender;
+};
 
 /**
  * Step 51
@@ -1036,7 +1062,10 @@ Scientist.prototype.addDiscovery = function(discovery){
  * @param {string} model The vehicle's model
  */
 
-
+var Vehicle = function(make, model){
+  this.make = '';
+  this.model = '';
+};
 /**
  * Step 52
  *
@@ -1047,6 +1076,12 @@ Scientist.prototype.addDiscovery = function(discovery){
  *
  */
 
+var Shape = function(sides) {
+  this.sides = null;
+  if(sides <=3){
+    sides = null;
+  }
+};
 
 /**
  * Step 53
@@ -1056,6 +1091,10 @@ Scientist.prototype.addDiscovery = function(discovery){
  * @param {boolean} isOpen     Whether the box is opened or closed
  */
 
+var Box = function(contents, isOpen){
+  this.contents = null;
+  this.isOpen = null;
+};
 
 /**
  * Step 54
@@ -1064,6 +1103,9 @@ Scientist.prototype.addDiscovery = function(discovery){
  * @param {boolean} isOpen Whether the door is opened or closed
  */
 
+var Door = function(isOpen){
+  this.isOpen = null;
+};
 
 /**
  * Step 55
@@ -1073,6 +1115,11 @@ Scientist.prototype.addDiscovery = function(discovery){
  * @param {string} color The shoe color
  */
 
+var Shoe = function(size, color){
+  this.size = null;
+  this.color = '';
+
+};
 
 /**
  * Step 56
@@ -1081,6 +1128,9 @@ Scientist.prototype.addDiscovery = function(discovery){
  * @param {number} stories How many stories tall the house is
  */
 
+var House = function(stories){
+  this.stories = null;
+};
 
 /**
  * Step 57
@@ -1089,6 +1139,9 @@ Scientist.prototype.addDiscovery = function(discovery){
  * @param {boolean} isOn Whether the light is on or off
  */
 
+var Lightbulb = function(isOn){
+  this.isOn = null;
+};
 
 /**
  * Step 58
@@ -1097,6 +1150,10 @@ Scientist.prototype.addDiscovery = function(discovery){
  * @param {string} flavor The cookie's flavor
  */
 
+var Cookie = function(flavor){
+  this.flavor = '';
+
+};
 
 /**
  * Step 59
@@ -1105,6 +1162,9 @@ Scientist.prototype.addDiscovery = function(discovery){
  * @param {Array} foods All the foods in the meal
  */
 
+ var Meal = function(foods){
+  this.foods = [];
+ };
 
 /**
  * Create a new instance of the Classes you defined above, below!
@@ -1113,8 +1173,10 @@ Scientist.prototype.addDiscovery = function(discovery){
 
 
 // Create 2 different species of animals
-var george;
-var nemo;
+
+  var george = new Animal('Monkey', 'male');
+  var nemo = new Animal('Fish','male');
+
 
 // Create 2 different vehicles
 var civic;
