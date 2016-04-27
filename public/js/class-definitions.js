@@ -1257,6 +1257,17 @@ Animal.prototype.isWarmBlooded = function(species){
  *
  */
 
+Vehicle.prototype.drive = function(streetName){
+  //needed instance since not provided in constructor
+  this.streetName = streetName;
+
+  if(typeof(this.streetName) === "string" && this.streetName.length > 0){
+    console.log(this.streetName);
+    return "Driving on " + this.streetName;
+  } else{
+    return "Driving forward";
+  }
+};
 
  /* Step 83
  *
