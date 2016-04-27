@@ -1212,8 +1212,8 @@ var chocolateChip = new Cookie('chocolate');
 var gingerbread = new Cookie('gingerbread');
 
 // Create 2 different meals
-var breakfast;
-var dinner;
+var breakfast = new Meal('cereal and milk');
+var dinner =  new Meal('fish and vegetables');
 
 
  /* Steps 81 to 90
@@ -1238,7 +1238,17 @@ var dinner;
  *
  */
 
+Animal.prototype.isWarmBlooded = function(species){
 
+  if(this.species !== "Monkey" && this.species !== "Bird"){
+    if(this.species !== "Fish" && "Monkey" && "Bird"){
+      return "Could not determine if warm-blooded";
+    }
+    return false;
+  }else{
+    return true;
+  }
+};
 /* Step 82
  *
  * Declare a Vehicle method called drive that accepts a parameter
