@@ -1262,7 +1262,6 @@ Vehicle.prototype.drive = function(streetName){
   this.streetName = streetName;
 
   if(typeof(this.streetName) === "string" && this.streetName.length > 0){
-    console.log(this.streetName);
     return "Driving on " + this.streetName;
   } else{
     return "Driving forward";
@@ -1288,6 +1287,17 @@ Vehicle.prototype.drive = function(streetName){
  */
 
 
+Shape.prototype.getType = function(sides){
+  var shapes = [{type: "triangle", sides: 3}, {type: "quadrilateral", sides: 4}, {type: "pentagon", sides: 5}, {type: "hexagon", sides:6}, {type: "heptagon", sides: 7}, {type: "octagon", sides: 8}, {type: "nonagon", sides: 9}, {type: "decagon", sides: 10}];
+
+  for (var i = 0; i < shapes.length; i++){
+    if(this.sides === shapes[i].sides){
+      return shapes[i].type;
+    }
+  }
+  return 'Could not determine type';
+};
+
 /* Step 84
  *
  * Declare a Box method called openBox that opens the box
@@ -1297,6 +1307,17 @@ Vehicle.prototype.drive = function(streetName){
  *
  */
 
+Box.prototype.openBox = function(isOpen){
+
+  if(this.isOpen){
+    return false;
+  }
+  if(this.isOpen === false){
+    console.log(this.isOpen);
+    //TODO passing but getting a syntax error?
+   return this.isOpen = true;
+  }
+};
 
  /* Step 85
  *
