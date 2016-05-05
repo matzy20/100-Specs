@@ -453,7 +453,7 @@ HundredSpecs.prototype = {
 		});
 		js.mocha.M.it("contents should be a cat.",function() {
 			js.expect.E.expect(catBox.contents).to.be.a(Animal);
-			js.expect.E.expect(catBox.contents.species).to.equal("Cat");
+			js.expect.E.expect(catBox.contents.species).to.equal("cat");
 		});
 		js.mocha.M.it("should be open.",function() {
 			js.expect.E.expect(catBox.isOpen).to.equal(true);

@@ -1307,15 +1307,13 @@ Shape.prototype.getType = function(sides){
  *
  */
 
-Box.prototype.openBox = function(isOpen){
+Box.prototype.openBox = function(){
 
   if(this.isOpen){
     return false;
   }
   if(this.isOpen === false){
-    console.log(this.isOpen);
-    //TODO passing but getting a syntax error?
-   return this.isOpen = true;
+    return this.isOpen = true;
   }
 };
 
@@ -1327,6 +1325,15 @@ Box.prototype.openBox = function(isOpen){
  *
  */
 
+Door.prototype.openClose = function(){
+
+  if(this.isOpen){
+    return this.isOpen = false;
+  }
+  if(this.isOpen === false){
+    return this.isOpen = true;
+  }
+};
 
 /* Step 86
  *
@@ -1335,6 +1342,9 @@ Box.prototype.openBox = function(isOpen){
  *
  */
 
+Shoe.prototype.findShoes = function(){
+  return "Found " + this.color + " shoes of size " + this.size;
+};
 
  /* Step 87
  *
@@ -1345,6 +1355,13 @@ Box.prototype.openBox = function(isOpen){
  *
  */
 
+House.prototype.isATallStory = function(storiesTooTall){
+
+  if(this.stories >= storiesTooTall){
+    return true;
+  }
+  return false;
+};
 
  /* Step 88
  *
@@ -1356,6 +1373,13 @@ Box.prototype.openBox = function(isOpen){
  *
  */
 
+Lightbulb.prototype.flipSwitch = function(on){
+
+  if(on === "on"){
+    return this.isOn = true;
+  }
+  return this.isOn = false;
+};
 
  /* Step 89
  *
@@ -1365,6 +1389,13 @@ Box.prototype.openBox = function(isOpen){
  *
  */
 
+Cookie.prototype.swipedByCookieMonster = function(dayOfTheWeek){
+
+  if(this.flavor === "chocolate" && dayOfTheWeek === "Monday"){
+    return true;
+  }
+  return false;
+};
 
  /* Step 90
  *
@@ -1380,6 +1411,12 @@ Box.prototype.openBox = function(isOpen){
  *
  */
 
+Meal.prototype.containsJunkFood = function(){
+  var foods = [];
+  var junkFood = ["chips", "soda", "ice cream", "popcorn", "candy"];
+
+
+};
 
  /* Steps 91 to 100
  *
