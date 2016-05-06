@@ -1240,15 +1240,16 @@ var dinner =  new Meal('fish and vegetables');
 
 Animal.prototype.isWarmBlooded = function(species){
 
-  if(this.species !== "Monkey" && this.species !== "Bird"){
-    if(this.species !== "Fish" && "Monkey" && "Bird"){
-      return "Could not determine if warm-blooded";
-    }
-    return false;
+  if(this.species === "Fish"){
+    this.species = false;
+  }else if(this.species === "Monkey" || this.species === "Bird"){
+    this.species = true;
   }else{
-    return true;
+  // if(this.species !== "Fish" || this.species !== "Monkey" || this.species !== "Bird"){
+    this.species = "Could not determine if warm-blooded";
   }
-};
+  return this.species;
+ };
 /* Step 82
  *
  * Declare a Vehicle method called drive that accepts a parameter
@@ -1309,12 +1310,12 @@ Shape.prototype.getType = function(sides){
 
 Box.prototype.openBox = function(){
 
-  if(this.isOpen){
+  if(this.isOpen === true){
     return false;
+  }else{
+    this.isOpen = true;
   }
-  if(this.isOpen === false){
-    return this.isOpen = true;
-  }
+  return this.isOpen;
 };
 
  /* Step 85
@@ -1328,11 +1329,11 @@ Box.prototype.openBox = function(){
 Door.prototype.openClose = function(){
 
   if(this.isOpen){
-    return this.isOpen = false;
+    this.isOpen = false;
+  }else if(this.isOpen === false){
+    this.isOpen = true;
   }
-  if(this.isOpen === false){
-    return this.isOpen = true;
-  }
+  return this.isOpen;
 };
 
 /* Step 86
@@ -1376,9 +1377,11 @@ House.prototype.isATallStory = function(storiesTooTall){
 Lightbulb.prototype.flipSwitch = function(on){
 
   if(on === "on"){
-    return this.isOn = true;
+    this.isOn = true;
+  }else{
+    this.isOn = false;
   }
-  return this.isOn = false;
+  return this.isOn;
 };
 
  /* Step 89
@@ -1415,14 +1418,14 @@ Meal.prototype.containsJunkFood = function(){
   var foods = [];
   var junkFood = ["chips", "soda", "ice cream", "popcorn", "candy"];
 
-
+  for (var i = 0; i < this.foods.length; i++){
+    foods.push(this.foods[i]);
+    if(foods.indexOf(junkFood[i]) !== -1){
+      return true;
+    }
+  }
+  return false;
 };
-
- /* Steps 91 to 100
- *
- * Call methods
- *
- */
 
 
 /* Step 91
@@ -1431,9 +1434,15 @@ Meal.prototype.containsJunkFood = function(){
  * and assign the values to each variable below.
  *
  */
-var warmBloodedAnimal;
+
+
+
+var warmBloodedAnimal = Animal.prototype.isWarmBlooded("Monkey");
 var coldBloodedAnimal;
 var notWarmOrColdAnimal;
+
+// warmBloodedAnimal.isWarmBlooded();
+
 
 
 /* Step 92
