@@ -1241,15 +1241,15 @@ var dinner =  new Meal('fish and vegetables');
 Animal.prototype.isWarmBlooded = function(species){
 
   if(this.species === "Fish"){
-    this.species = false;
+    return false;
   }else if(this.species === "Monkey" || this.species === "Bird"){
-    this.species = true;
+    return true;
   }else{
-  // if(this.species !== "Fish" || this.species !== "Monkey" || this.species !== "Bird"){
-    this.species = "Could not determine if warm-blooded";
+    return "Could not determine if warm-blooded";
   }
   return this.species;
  };
+
 /* Step 82
  *
  * Declare a Vehicle method called drive that accepts a parameter
@@ -1435,15 +1435,9 @@ Meal.prototype.containsJunkFood = function(){
  *
  */
 
-
-
 var warmBloodedAnimal = Animal.prototype.isWarmBlooded("Monkey");
-var coldBloodedAnimal;
-var notWarmOrColdAnimal;
-
-// warmBloodedAnimal.isWarmBlooded();
-
-
+var coldBloodedAnimal = Animal.prototype.isWarmBlooded("Fish");
+var notWarmOrColdAnimal = Animal.prototype.isWarmBlooded("Broccoli");
 
 /* Step 92
  *
@@ -1451,8 +1445,8 @@ var notWarmOrColdAnimal;
  * and assign the values to each variable below.
  *
  */
-var streetDriving;
-var forwardDriving;
+var streetDriving = Vehicle.prototype.drive('Keolu Drive');
+var forwardDriving = Vehicle.prototype.drive(1234);
 
 
  /* Step 93
