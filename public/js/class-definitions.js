@@ -1445,9 +1445,14 @@ Meal.prototype.containsJunkFood = function(){
  *
  */
 
-var warmBloodedAnimal = Animal.prototype.isWarmBlooded("Monkey");
-var coldBloodedAnimal = Animal.prototype.isWarmBlooded("Fish");
-var notWarmOrColdAnimal = Animal.prototype.isWarmBlooded("Broccoli");
+var Monkey = new Animal("Monkey");
+var warmBloodedAnimal = Monkey.isWarmBlooded();
+
+var Fish = new Animal("Fish");
+var coldBloodedAnimal = Fish.isWarmBlooded();
+
+var Banana = new Animal("Banana");
+var notWarmOrColdAnimal = Banana.isWarmBlooded();
 
 /* Step 92
  *
