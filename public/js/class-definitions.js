@@ -1240,15 +1240,17 @@ var dinner =  new Meal('fish and vegetables');
 
 Animal.prototype.isWarmBlooded = function(species){
 
-  if(this.species === "Fish"){
-    return false;
-  }else if(this.species === "Monkey" || this.species === "Bird"){
-    return true;
+  if(species === "Fish"){
+    this.species = false;
+  }else if(species === "Monkey" || species === "Bird"){
+    this.species = true;
   }else{
-    return "Could not determine if warm-blooded";
+    this.species = "Could not determine if warm-blooded";
   }
   return this.species;
  };
+
+ console.log(Animal.prototype.isWarmBlooded("Bird"));
 
 /* Step 82
  *
@@ -1267,7 +1269,9 @@ Vehicle.prototype.drive = function(streetName){
   } else{
     return "Driving forward";
   }
+  return this.streetName;
 };
+console.log(Vehicle.prototype.drive("Keolu Drive"));
 
  /* Step 83
  *
@@ -1290,14 +1294,16 @@ Vehicle.prototype.drive = function(streetName){
 
 Shape.prototype.getType = function(sides){
   var shapes = [{type: "triangle", sides: 3}, {type: "quadrilateral", sides: 4}, {type: "pentagon", sides: 5}, {type: "hexagon", sides:6}, {type: "heptagon", sides: 7}, {type: "octagon", sides: 8}, {type: "nonagon", sides: 9}, {type: "decagon", sides: 10}];
+  this.sides = sides;
 
   for (var i = 0; i < shapes.length; i++){
-    if(this.sides === shapes[i].sides){
+    if(sides === shapes[i].sides){
       return shapes[i].type;
     }
   }
   return 'Could not determine type';
 };
+console.log(Shape.prototype.getType(3));
 
 /* Step 84
  *
@@ -1313,10 +1319,11 @@ Box.prototype.openBox = function(){
   if(this.isOpen === true){
     return false;
   }else{
-    this.isOpen = true;
+    this.isOpen =  true;
   }
   return this.isOpen;
 };
+console.log(Box.prototype.openBox(false));
 
  /* Step 85
  *
@@ -1326,15 +1333,16 @@ Box.prototype.openBox = function(){
  *
  */
 
-Door.prototype.openClose = function(){
+Door.prototype.openClose = function(isOpen){
 
-  if(this.isOpen){
+  if(isOpen){
     this.isOpen = false;
-  }else if(this.isOpen === false){
+  }else if(isOpen === false){
     this.isOpen = true;
   }
   return this.isOpen;
 };
+console.log(Door.prototype.openClose(true));
 
 /* Step 86
  *
@@ -1343,9 +1351,11 @@ Door.prototype.openClose = function(){
  *
  */
 
-Shoe.prototype.findShoes = function(){
-  return "Found " + this.color + " shoes of size " + this.size;
+Shoe.prototype.findShoes = function(color, size){
+
+  return "Found " + color + " shoes of size " + size;
 };
+console.log(Shoe.prototype.findShoes('red', 20));
 
  /* Step 87
  *
@@ -1419,6 +1429,7 @@ Meal.prototype.containsJunkFood = function(){
   var junkFood = ["chips", "soda", "ice cream", "popcorn", "candy"];
 
   for (var i = 0; i < this.foods.length; i++){
+    console.log(this.foods);
     foods.push(this.foods[i]);
     if(foods.indexOf(junkFood[i]) !== -1){
       return true;
@@ -1426,7 +1437,6 @@ Meal.prototype.containsJunkFood = function(){
   }
   return false;
 };
-
 
 /* Step 91
  *
@@ -1445,7 +1455,7 @@ var notWarmOrColdAnimal = Animal.prototype.isWarmBlooded("Broccoli");
  * and assign the values to each variable below.
  *
  */
-var streetDriving = Vehicle.prototype.drive('Keolu Drive');
+var streetDriving = Vehicle.prototype.drive("Keolu Drive");
 var forwardDriving = Vehicle.prototype.drive(1234);
 
 
@@ -1455,9 +1465,9 @@ var forwardDriving = Vehicle.prototype.drive(1234);
  * and assign the values to each variable below.
  *
  */
-var decagon;
-var polygon;
 
+var decagon = Shape.prototype.getType(10);
+var polygon = Shape.prototype.getType(2);
 
 /* Step 94
  *
@@ -1465,8 +1475,8 @@ var polygon;
  * and assign the values to each variable below.
  *
  */
-var openAClosedBox;
-var closeAnOpenBox;
+var openAClosedBox = Box.prototype.openBox(true);
+var closeAnOpenBox = Box.prototype.openBox(false);
 
 
  /* Step 95
@@ -1475,8 +1485,8 @@ var closeAnOpenBox;
  * and assign the values to each variable below.
  *
  */
-var openAClosedDoor;
-var closeAnOpenDoor;
+var openAClosedDoor = Door.prototype.openClose(false);
+var closeAnOpenDoor = Door.prototype.openClose(true);
 
 
 /* Step 96
@@ -1485,8 +1495,8 @@ var closeAnOpenDoor;
  * and assign the values to each variable below.
  *
  */
-var redShoesSize7;
-var blackShoesSize10;
+var redShoesSize7 = Shoe.prototype.findShoes('red', 7);
+var blackShoesSize10 = Shoe.prototype.findShoes('black', 10);
 
 
  /* Step 97
@@ -1495,8 +1505,8 @@ var blackShoesSize10;
  * and assign the values to each variable below.
  *
  */
-var farTooTallAStory;
-var shortStory;
+var farTooTallAStory = House.prototype.isATallStory(4);
+var shortStory = House.prototype.isATallStory(1);
 
 
  /* Step 98
@@ -1505,8 +1515,8 @@ var shortStory;
  * and assign the values to each variable below.
  *
  */
-var kitchenLightsOn;
-var porchLightsOff;
+var kitchenLightsOn = Lightbulb.prototype.flipSwitch("on");
+var porchLightsOff = Lightbulb.prototype.flipSwitch("off");
 
 
  /* Step 99
@@ -1515,8 +1525,8 @@ var porchLightsOff;
  * and assign the values to each variable below.
  *
  */
-var cookieMonsterPwns;
-var cookieMonsterBlocked;
+var cookieMonsterPwns = Cookie.prototype.swipedByCookieMonster("Monday");
+var cookieMonsterBlocked =Cookie.prototype.swipedByCookieMonster();
 
 
  /* Step 100
@@ -1525,5 +1535,5 @@ var cookieMonsterBlocked;
  * and assign the values to each variable below.
  *
  */
-var badForYou;
-var goodForYou;
+var badForYou = Meal.prototype.containsJunkFood("ice cream");
+var goodForYou = Meal.prototype.containsJunkFood("salad");
