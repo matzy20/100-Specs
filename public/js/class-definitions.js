@@ -1188,7 +1188,8 @@ var square = new Shape(4);
 var hexagon = new Shape(6);
 
 // Create 2 boxes
-var catBox = new Box('cat', true);
+var cat = new Animal('cat', 'female');
+var catBox = new Box(cat, true);
 var christmasPresent = new Box('present', false);
 
 // Create 2 doors
@@ -1261,7 +1262,6 @@ Animal.prototype.isWarmBlooded = function(){
  */
 
 Vehicle.prototype.drive = function(streetName){
-  //needed instance since not provided in constructor
   this.streetName = streetName;
 
   if(typeof(this.streetName) === "string" && this.streetName.length > 0){
@@ -1292,12 +1292,11 @@ console.log(Vehicle.prototype.drive("Keolu Drive"));
  */
 
 
-Shape.prototype.getType = function(sides){
+Shape.prototype.getType = function(){
   var shapes = [{type: "triangle", sides: 3}, {type: "quadrilateral", sides: 4}, {type: "pentagon", sides: 5}, {type: "hexagon", sides:6}, {type: "heptagon", sides: 7}, {type: "octagon", sides: 8}, {type: "nonagon", sides: 9}, {type: "decagon", sides: 10}];
-  this.sides = sides;
 
   for (var i = 0; i < shapes.length; i++){
-    if(sides === shapes[i].sides){
+    if(this.sides === shapes[i].sides){
       return shapes[i].type;
     }
   }
@@ -1316,14 +1315,15 @@ console.log(Shape.prototype.getType(3));
 
 Box.prototype.openBox = function(){
 
-  if(this.isOpen === true){
-    return false;
+  if(this.isOpen === false){
+    console.log(this.isOpen);
+    this.isOpen = true;
   }else{
-    this.isOpen =  true;
+    return false;
   }
   return this.isOpen;
 };
-console.log(Box.prototype.openBox(false));
+// console.log(Box.prototype.openBox(false));
 
  /* Step 85
  *
@@ -1333,12 +1333,12 @@ console.log(Box.prototype.openBox(false));
  *
  */
 
-Door.prototype.openClose = function(isOpen){
+Door.prototype.openClose = function(){
 
-  if(isOpen){
-    this.isOpen = false;
-  }else if(isOpen === false){
+  if(this.isOpen === false){
     this.isOpen = true;
+  }else{
+    this.isOpen = false;
   }
   return this.isOpen;
 };
@@ -1351,11 +1351,10 @@ console.log(Door.prototype.openClose(true));
  *
  */
 
-Shoe.prototype.findShoes = function(color, size){
+Shoe.prototype.findShoes = function(){
 
-  return "Found " + color + " shoes of size " + size;
+  return "Found " + this.color + " shoes of size " + this.size;
 };
-console.log(Shoe.prototype.findShoes('red', 20));
 
  /* Step 87
  *
@@ -1368,10 +1367,13 @@ console.log(Shoe.prototype.findShoes('red', 20));
 
 House.prototype.isATallStory = function(storiesTooTall){
 
-  if(this.stories >= storiesTooTall){
+  if(this.stories >= storiesTooTall || this.stories === storiesTooTall){
     return true;
-  }
-  return false;
+  }else{
+    return false;
+    }
+
+  return storiesTooTall;
 };
 
  /* Step 88
@@ -1460,8 +1462,10 @@ var notWarmOrColdAnimal = Banana.isWarmBlooded();
  * and assign the values to each variable below.
  *
  */
-var streetDriving = Vehicle.prototype.drive("Keolu Drive");
-var forwardDriving = Vehicle.prototype.drive(1234);
+
+//QUESTION: why is this one setup differently
+var streetDriving = Vehicle.prototype.drive("Keolu");
+var forwardDriving = Vehicle.prototype.drive(1224);
 
 
  /* Step 93
@@ -1471,8 +1475,11 @@ var forwardDriving = Vehicle.prototype.drive(1234);
  *
  */
 
-var decagon = Shape.prototype.getType(10);
-var polygon = Shape.prototype.getType(2);
+var tenSides = new Shape(10);
+var decagon = tenSides.getType();
+
+var twoSides = new Shape(2);
+var polygon = twoSides.getType();
 
 /* Step 94
  *
@@ -1480,8 +1487,13 @@ var polygon = Shape.prototype.getType(2);
  * and assign the values to each variable below.
  *
  */
-var openAClosedBox = Box.prototype.openBox(true);
-var closeAnOpenBox = Box.prototype.openBox(false);
+
+//TODO: confirm that it needs same format and 'contents' in box unlike 'Vehicle'
+var myBox = new Box('Me', false);
+var openAClosedBox = myBox.openBox();
+
+var yourBox = new Box('You', true);
+var closeAnOpenBox = yourBox.openBox();
 
 
  /* Step 95
@@ -1490,8 +1502,12 @@ var closeAnOpenBox = Box.prototype.openBox(false);
  * and assign the values to each variable below.
  *
  */
-var openAClosedDoor = Door.prototype.openClose(false);
-var closeAnOpenDoor = Door.prototype.openClose(true);
+
+var open = new Door(false);
+var openAClosedDoor = open.openClose();
+
+var close = new Door(true);
+var closeAnOpenDoor = close.openClose();
 
 
 /* Step 96
@@ -1500,8 +1516,12 @@ var closeAnOpenDoor = Door.prototype.openClose(true);
  * and assign the values to each variable below.
  *
  */
-var redShoesSize7 = Shoe.prototype.findShoes('red', 7);
-var blackShoesSize10 = Shoe.prototype.findShoes('black', 10);
+
+var red = new Shoe(7, 'red');
+var redShoesSize7 = red.findShoes();
+
+var black = new Shoe(10, 'black');
+var blackShoesSize10 = black.findShoes();
 
 
  /* Step 97
@@ -1510,8 +1530,12 @@ var blackShoesSize10 = Shoe.prototype.findShoes('black', 10);
  * and assign the values to each variable below.
  *
  */
-var farTooTallAStory = House.prototype.isATallStory(4);
-var shortStory = House.prototype.isATallStory(1);
+
+var taller = new House(3);
+var farTooTallAStory = taller.isATallStory(3);
+
+var shorter = new House(2);
+var shortStory = shorter.isATallStory(4);
 
 
  /* Step 98
