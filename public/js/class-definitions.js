@@ -1238,14 +1238,14 @@ var dinner =  new Meal('fish and vegetables');
  *
  */
 
-Animal.prototype.isWarmBlooded = function(species){
+Animal.prototype.isWarmBlooded = function(){
 
-  if(species === "Fish"){
-    this.species = false;
-  }else if(species === "Monkey" || species === "Bird"){
-    this.species = true;
+  if(this.species === "Fish"){
+    return false;
+  }else if(this.species === "Monkey" || this.species === "Bird"){
+    return true;
   }else{
-    this.species = "Could not determine if warm-blooded";
+    return "Could not determine if warm-blooded";
   }
   return this.species;
  };
