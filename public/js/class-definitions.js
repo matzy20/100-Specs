@@ -1213,8 +1213,9 @@ var chocolateChip = new Cookie('chocolate');
 var gingerbread = new Cookie('gingerbread');
 
 // Create 2 different meals
-var breakfast = new Meal('cereal and milk');
-var dinner =  new Meal('fish and vegetables');
+var breakfast = new Meal(["cereal", "milk"]);
+console.log(breakfast);
+var dinner =  new Meal(["fish", "vegetables"]);
 
 
  /* Steps 81 to 90
@@ -1372,7 +1373,6 @@ House.prototype.isATallStory = function(storiesTooTall){
   }else{
     return false;
     }
-
   return storiesTooTall;
 };
 
@@ -1390,11 +1390,14 @@ Lightbulb.prototype.flipSwitch = function(on){
 
   if(on === "on"){
     this.isOn = true;
-  }else{
+  }
+  if(on !== "on"){
     this.isOn = false;
   }
   return this.isOn;
 };
+
+console.log(Lightbulb.prototype.flipSwitch("on"));
 
  /* Step 89
  *
@@ -1427,17 +1430,15 @@ Cookie.prototype.swipedByCookieMonster = function(dayOfTheWeek){
  */
 
 Meal.prototype.containsJunkFood = function(){
-  var foods = [];
+  var foods = this.foods;
   var junkFood = ["chips", "soda", "ice cream", "popcorn", "candy"];
 
-  for (var i = 0; i < this.foods.length; i++){
-    console.log(this.foods);
-    foods.push(this.foods[i]);
-    if(foods.indexOf(junkFood[i]) !== -1){
-      return true;
+  for (var i = 0; i < junkFood.length; i++){
+    if(foods.indexOf(junkFood[i]) === -1){
+      return false;
     }
+    return true;
   }
-  return false;
 };
 
 /* Step 91
@@ -1544,8 +1545,12 @@ var shortStory = shorter.isATallStory(4);
  * and assign the values to each variable below.
  *
  */
-var kitchenLightsOn = Lightbulb.prototype.flipSwitch("on");
-var porchLightsOff = Lightbulb.prototype.flipSwitch("off");
+
+var turnOn = new Lightbulb(true);
+var kitchenLightsOn = turnOn.flipSwitch("on");
+
+var turnOff = new Lightbulb(false);
+var porchLightsOff = turnOff.flipSwitch("off");
 
 
  /* Step 99
@@ -1554,8 +1559,12 @@ var porchLightsOff = Lightbulb.prototype.flipSwitch("off");
  * and assign the values to each variable below.
  *
  */
-var cookieMonsterPwns = Cookie.prototype.swipedByCookieMonster("Monday");
-var cookieMonsterBlocked =Cookie.prototype.swipedByCookieMonster();
+
+var favFlavor = new Cookie("chocolate");
+var cookieMonsterPwns = favFlavor.swipedByCookieMonster("Monday");
+
+var ekkFlavor = new Cookie("peanut butter");
+var cookieMonsterBlocked = ekkFlavor.swipedByCookieMonster("Wednesday");
 
 
  /* Step 100
@@ -1564,5 +1573,11 @@ var cookieMonsterBlocked =Cookie.prototype.swipedByCookieMonster();
  * and assign the values to each variable below.
  *
  */
-var badForYou = Meal.prototype.containsJunkFood("ice cream");
-var goodForYou = Meal.prototype.containsJunkFood("salad");
+
+var unhealthy = new Meal(["chips"]);
+var badForYou = unhealthy.containsJunkFood();
+console.log(badForYou);
+
+//all need to be healthy
+var healthy = new Meal(["salad", "sandwich"]);
+var goodForYou = healthy.containsJunkFood();
